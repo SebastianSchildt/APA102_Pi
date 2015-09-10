@@ -86,6 +86,10 @@ class APA102:
     Sets the color for the entire strip to black, and immediately shows the result.
     """
     def clearStrip(self):
+        self.leds = [] # Pixel buffer
+        for _ in range(self.numLEDs): # Allocate the entire buffer. If later some LEDs are not set,
+            self.leds.extend([self.ledstart]) # they will just be black,
+            self.leds.extend([0x00] * 3) #  instead of crashing the driver.
         self.spi.xfer2([self.ledstart, 0x00, 0x00, 0x00] * self.numLEDs)
         self.clockEndFrame() # ... and clock the end frame so that also the last LED(s) shut down.
 
