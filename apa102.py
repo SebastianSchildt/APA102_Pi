@@ -101,8 +101,8 @@ class APA102:
         startIndex = 4 * ledNum
         self.leds[startIndex] = self.ledstart
         self.leds[startIndex+3] = red
-        self.leds[startIndex+1] = green
-        self.leds[startIndex+2] = blue
+        self.leds[startIndex+2] = green
+        self.leds[startIndex+1] = blue
         
     """
     Sets the color of one pixel in the LED stripe. The changed pixel is not shown yet on the Stripe, it is only
